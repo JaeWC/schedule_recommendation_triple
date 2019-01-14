@@ -1,6 +1,6 @@
-getPlaceOption = (obj, time) => {
-  const maxTime = time;
-  const placeName = Object.keys(obj);
+getPlaceOption = (placeTimeObj, maximumTime) => {
+  const travelTime = maximumTime;
+  const placeName = Object.keys(placeTimeObj);
 
   let recommendation = [];
   for (let i = 0; i < placeName.length - 1; i++) {
@@ -9,31 +9,31 @@ getPlaceOption = (obj, time) => {
     let inner = [];
     let currentTime = 0;
 
-    if (obj[currentPlace] > maxTime) {
+    if (placeTimeObj[currentPlace] > travelTime) {
       continue;
-    } else if (obj[currentPlace] === maxTime) {
+    } else if (placeTimeObj[currentPlace] === travelTime) {
       placeOption = JSON.stringify([currentPlace]);
       recommendation.push(placeOption);
       continue;
     } else {
-      currentTime += obj[currentPlace];
+      currentTime += placeTimeObj[currentPlace];
       inner.push(currentPlace);
 
       for (let j = i + 1; j < placeName.length; j++) {
         newPlace = placeName[j];
 
-        currentTime += obj[newPlace];
+        currentTime += placeTimeObj[newPlace];
         inner.push(newPlace);
 
-        if (currentTime < maxTime) {
+        if (currentTime < travelTime) {
           recommendation.push(JSON.stringify(inner));
           continue;
-        } else if (currentTime > maxTime) {
-          currentTime -= obj[newPlace];
+        } else if (currentTime > travelTime) {
+          currentTime -= placeTimeObj[newPlace];
           inner.pop();
         } else {
           recommendation.push(JSON.stringify(inner));
-          currentTime -= obj[newPlace];
+          currentTime -= placeTimeObj[newPlace];
           inner.pop();
 
           continue;

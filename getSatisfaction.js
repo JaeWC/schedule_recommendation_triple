@@ -1,13 +1,13 @@
-getSatisfaction = (obj, json) => {
+getSatisfaction = (placeSatisfyObj, placeListJSON) => {
   let maxResult = 0;
   let placeResult;
 
-  for (let i = 0; i < json.length; i++) {
-    let placeInfo = JSON.parse(json[i]);
+  for (let i = 0; i < placeListJSON.length; i++) {
+    let placeInfo = JSON.parse(placeListJSON[i]);
     let currentResult = 0;
 
     for (let j = 0; j < placeInfo.length; j++) {
-      currentResult += obj[placeInfo[j]];
+      currentResult += placeSatisfyObj[placeInfo[j]];
     }
 
     if (maxResult > currentResult) {
