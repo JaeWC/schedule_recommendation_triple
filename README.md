@@ -1,6 +1,6 @@
 # 구현 외 문제
 
-![Recommendation Solution Algorithm](./solutionDiagram.png)
+![Recommendation Solution Algorithm](./asset/solutionDiagram.png)
 
 ## 1. 만약에 특정한 장소를 무조건 방문해야 한다고 하면 알고리즘이 어떻게 변경될까요?
 
